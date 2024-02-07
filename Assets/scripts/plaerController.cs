@@ -45,6 +45,7 @@ public float Gravity = 9.8f;
         {
           _fallVelocity = -JampForce;
         }
+        
     }
     void FixedUpdate()
     {
@@ -52,6 +53,11 @@ public float Gravity = 9.8f;
 
         _fallVelocity += Gravity * Time.fixedDeltaTime;
         _CharacterController.Move(Vector3.down * _fallVelocity * Time.fixedDeltaTime);
+
+        if (_CharacterController.isGrounded)
+        {
+            _fallVelocity = 0;
+        }
     }
 
 }
